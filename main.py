@@ -190,58 +190,106 @@
 
 # ************Rock, Paper, Scissors*****************
 
-import random
+# import random
 
-rock = '''
-    _______
----'   ____)
-      (_____)
-      (_____)
-      (____)
----.__(___)
-'''
+# rock = '''
+#     _______
+# ---'   ____)
+#       (_____)
+#       (_____)
+#       (____)
+# ---.__(___)
+# '''
 
-paper = '''
-    _______
----'   ____)____
-          ______)
-          _______)
-         _______)
----.__________)
-'''
+# paper = '''
+#     _______
+# ---'   ____)____
+#           ______)
+#           _______)
+#          _______)
+# ---.__________)
+# '''
 
-scissors = '''
-    _______
----'   ____)____
-          ______)
-       __________)
-      (____)
----.__(___)
-'''
+# scissors = '''
+#     _______
+# ---'   ____)____
+#           ______)
+#        __________)
+#       (____)
+# ---.__(___)
+# '''
 
-game_images = [rock, paper, scissors]
+# game_images = [rock, paper, scissors]
 
-print("Welcome to Rock, Paper, Scissors game!\n")
+# print("Welcome to Rock, Paper, Scissors game!\n")
 
-player_choice = int(input("Please type 0 'Rock', 1 for 'Paper' or 2 for 'Scissors' to see if you win or lose the game, let's get started!\n"))
+# player_choice = int(input("Please type 0 'Rock', 1 for 'Paper' or 2 for 'Scissors' to see if you win or lose the game, let's get started!\n"))
 
-if player_choice >= 3 or player_choice < 0: 
-  print("You typed an invalid number, you lose!") 
-else: 
-    print(game_images[player_choice])
+# if player_choice >= 3 or player_choice < 0: 
+#   print("You typed an invalid number, you lose!") 
+# else: 
+#     print(game_images[player_choice])
 
-    computer_choice = random.randint(0, 2)
-    print("Computer chose:")
-    print(game_images[computer_choice])
+#     computer_choice = random.randint(0, 2)
+#     print("Computer chose:")
+#     print(game_images[computer_choice])
 
 
-    if player_choice == 0 and computer_choice == 2:
-        print("You win!")
-    elif computer_choice == 0 and player_choice == 2:
-        print("You lose")
-    elif computer_choice > player_choice:
-        print("You lose")
-    elif player_choice > computer_choice:
-        print("You win!")
-    elif computer_choice == player_choice:
-        print("It's a draw")
+#     if player_choice == 0 and computer_choice == 2:
+#         print("You win!")
+#     elif computer_choice == 0 and player_choice == 2:
+#         print("You lose")
+#     elif computer_choice > player_choice:
+#         print("You lose")
+#     elif player_choice > computer_choice:
+#         print("You win!")
+#     elif computer_choice == player_choice:
+#         print("It's a draw")
+
+# **************Average Heights******************
+
+# student_heights = input("What's the students heights? Type separately:\n").split()
+# for n in range(0, len(student_heights)):
+#   student_heights[n] = int(student_heights[n])
+
+# total_height = 0
+
+# for height in student_heights:
+#     total_height += height
+# print(f"total height = {total_height}")
+
+# number_of_students = 0
+
+# for student in student_heights:
+#    number_of_students += 1
+# print(f"Number of students = {number_of_students}")
+
+# average_height = round(total_height / number_of_students)
+# print(f"Average height = {average_height}")
+
+
+# **************Comparison of highest score**************
+
+# student_scores = input().split()
+
+# for n in range(0, len(student_scores)):
+#     student_scores[n] = int(student_scores[n])
+
+# highest_score = 0
+
+# for score in student_scores:
+#     if score > highest_score:
+#         highest_score = score
+# print(f"Highest score is: {highest_score}")
+
+# **************************************************
+# target = int(input())
+# even_sum = 0
+
+# for num in range(2, target + 1):
+#     if num % 2 == 0:
+#         even_sum += num
+# print(f"Total Number is: {even_sum}")
+
+# ***************FizzBuzz************************
+
