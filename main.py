@@ -308,34 +308,56 @@
 
 # ******************Password Generator**************
 
+# import random
+# letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+# numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+# symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+# print("Welcome to the PyPassword Generator!")
+# nr_letters = int(input("How many letters would you like in your password?\n")) 
+# nr_symbols = int(input(f"How many symbols would you like?\n"))
+# nr_numbers = int(input(f"How many numbers would you like?\n"))
+
+# password_list = []
+
+# for char in range(1, nr_letters + 1):
+#     password_list += random.choice(letters)
+
+# for char in range(1, nr_symbols + 1):
+#     password_list += random.choice(symbols)
+
+# for char in range(1, nr_numbers + 1):
+#     password_list += random.choice(numbers)
+
+# print(password_list)
+
+# random.shuffle(password_list)
+
+# password = ""
+
+# for char in password_list:
+#     password += char
+
+# print(f"Your password is generated, it is: {password}")
+
+# **********************HANGMAN********************
 import random
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
-print("Welcome to the PyPassword Generator!")
-nr_letters = int(input("How many letters would you like in your password?\n")) 
-nr_symbols = int(input(f"How many symbols would you like?\n"))
-nr_numbers = int(input(f"How many numbers would you like?\n"))
+word_list = ["conscience", "craftsman", "apparently"]
 
-password_list = []
+chosen_word = random.choice(word_list)
+print(f"\nFor testing, here is the word: {chosen_word}.")
 
-for char in range(1, nr_letters + 1):
-    password_list += random.choice(letters)
+guess = input("\nWelcome to the 'Hangman' game, guess a letter: ").lower()
+display = []
+word_length = len(chosen_word)
 
-for char in range(1, nr_symbols + 1):
-    password_list += random.choice(symbols)
+for _ in range(word_length):
+    display += "_"
+    # print(display)
 
-for char in range(1, nr_numbers + 1):
-    password_list += random.choice(numbers)
-
-print(password_list)
-
-random.shuffle(password_list)
-
-password = ""
-
-for char in password_list:
-    password += char
-
-print(f"Your password is generated, it is: {password}")
+for position in range(word_length):
+    letter = chosen_word[position]
+    if letter == guess:
+        display[position] = letter
+print(f"\n{display}")
