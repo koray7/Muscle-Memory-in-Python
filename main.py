@@ -415,15 +415,47 @@
 
 # *********************************************************
 
-def prime_checker(num):
-    if num <= 1:
-        print(f"'{num}' is not a prime number")
-        return
-    for i in range(2, int(num ** 0.5) + 1):
-        if num % i == 0:
-            print(f"'{num}' is not a prime number")
-            return
-    print(f"Your number {num} is a prime number!")
+# def prime_checker(num):
+#     if num <= 1:
+#         print(f"'{num}' is not a prime number")
+#         return
+#     for i in range(2, int(num ** 0.5) + 1):
+#         if num % i == 0:
+#             print(f"'{num}' is not a prime number")
+#             return
+#     print(f"Your number {num} is a prime number!")
 
-n = int(input("Enter a number to see if it's a prime number: "))
-prime_checker(num=n)
+# n = int(input("Enter a number to see if it's a prime number: "))
+# prime_checker(num=n)
+
+# **************Caesar Cipher***********************
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+
+def encrypt (user_text, shift_amount):
+    cipher_text = ""
+    for letter in user_text:
+        position = alphabet.index(letter)
+        new_position = position + shift_amount
+        new_letter = alphabet[new_position]
+        cipher_text += new_letter
+    print(f"The encoded text is {cipher_text}")
+
+
+def decrypt (cipher_text, shift_amount):
+    plain_text = ""
+    for letter in cipher_text:
+        position = alphabet.index(letter)
+        new_position = position - shift_amount
+        new_letter = alphabet[new_position]
+        plain_text += new_letter
+    print(f"Your text in decrypted version is: {plain_text}")
+
+if direction == "encode":
+    encrypt(user_text=text, shift_amount=shift)
+elif direction == "decode":
+    decrypt(cipher_text=text, shift_amount=shift)
