@@ -341,57 +341,89 @@
 # print(f"Your password is generated, it is: {password}")
 
 # ********************** HANGMAN ********************
-import random
-from hangman_art import stages, logo
-from hangman_words import word_list
-import os
+# import random
+# from hangman_art import stages, logo
+# from hangman_words import word_list
+# import os
 
-end_of_game = False
-# word_list = ["conscience", "craftsman", "apparently"]
-chosen_word = random.choice(word_list)
-word_length = len(chosen_word)
+# end_of_game = False
+# # word_list = ["conscience", "craftsman", "apparently"]
+# chosen_word = random.choice(word_list)
+# word_length = len(chosen_word)
 
-# guess = input("\nWelcome to the 'Hangman' game, guess a letter: ").lower()
+# # guess = input("\nWelcome to the 'Hangman' game, guess a letter: ").lower()
 
-lives = 6
+# lives = 6
 
-print(logo)
+# print(logo)
 
-print(f"\nFor testing, here is the word: {chosen_word}.")
+# print(f"\nFor testing, here is the word: {chosen_word}.")
 
-display = []
-for _ in range(word_length):
-    display += "_"
-    # print(display)
-
-
-
-while not end_of_game:
-    guess = input("\nWelcome to the 'Hangman' game, guess a letter: ").lower()
-
-    os.system('clear')
-
-    if guess in display:
-        print(f"You've already guessed {guess}")
-
-    for position in range(word_length):
-        letter = chosen_word[position]
-        # print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
-        if letter == guess:
-            display[position] = letter
-
-    if guess not in chosen_word:
-        print(f"You've guessed {guess}, that's not in the word. You lose a life.")
-        lives -= 1
-        if lives == 0:
-            end_of_game = True
-            print("You lose!")
-    print(f"{''.join(display)}")
+# display = []
+# for _ in range(word_length):
+#     display += "_"
+#     # print(display)
 
 
-    # print(f"\n{display}")
-    if "_" not in display:
-        end_of_game = True
-        print("You win!")
-    print(stages[lives])
 
+# while not end_of_game:
+#     guess = input("\nWelcome to the 'Hangman' game, guess a letter: ").lower()
+
+#     os.system('clear')
+
+#     if guess in display:
+#         print(f"You've already guessed {guess}")
+
+#     for position in range(word_length):
+#         letter = chosen_word[position]
+#         # print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
+#         if letter == guess:
+#             display[position] = letter
+
+#     if guess not in chosen_word:
+#         print(f"You've guessed {guess}, that's not in the word. You lose a life.")
+#         lives -= 1
+#         if lives == 0:
+#             end_of_game = True
+#             print("You lose!")
+#     print(f"{''.join(display)}")
+
+
+#     # print(f"\n{display}")
+#     if "_" not in display:
+#         end_of_game = True
+#         print("You win!")
+#     print(stages[lives])
+
+# ********************************************************
+# ********************************************************
+# ********************************************************
+
+# import math
+# def paint_calc(height, width, cover):
+#     number_of_cans = (height * width) / cover
+#     round_up_cans = math.ceil(number_of_cans)
+#     print(f"You will need {round_up_cans} cans of paint.")
+
+
+# test_h = int(input("Height of the wall?: "))
+# test_w = int(input("Width of the wall?: "))
+
+# coverage = 5
+
+# paint_calc(height=test_h, width=test_w, cover=coverage)
+
+# *********************************************************
+
+def prime_checker(num):
+    if num <= 1:
+        print(f"'{num}' is not a prime number")
+        return
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            print(f"'{num}' is not a prime number")
+            return
+    print(f"Your number {num} is a prime number!")
+
+n = int(input("Enter a number to see if it's a prime number: "))
+prime_checker(num=n)
