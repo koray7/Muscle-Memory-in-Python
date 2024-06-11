@@ -492,20 +492,88 @@
 # ************************************************************
 # ************************************************************
 
-student_scores = {
-  "Harry": 81,
-  "Ron": 78,
-  "Hermione": 99, 
-  "Draco": 74,
-  "Neville": 62,
-}
+# student_scores = {
+#   "Harry": 81,
+#   "Ron": 78,
+#   "Hermione": 99, 
+#   "Draco": 74,
+#   "Neville": 62,
+# }
 
-for student in student_scores:
-    if student_scores[student] >= 91:
-        print(f" {student} 'Outstanding'")
-    elif student_scores[student] >= 81 and student_scores[student] <= 90:
-        print(f"{student} 'Exceeds Expectations'")
-    elif student_scores[student] >= 71 and student_scores[student] <= 80:
-        print(f"{student} 'Acceptable'")
-    elif student_scores[student] <= 70:
-        print(f"{student} 'Fail'")
+# for student in student_scores:
+#     if student_scores[student] >= 91:
+#         print(f" {student} 'Outstanding'")
+#     elif student_scores[student] >= 81 and student_scores[student] <= 90:
+#         print(f"{student} 'Exceeds Expectations'")
+#     elif student_scores[student] >= 71 and student_scores[student] <= 80:
+#         print(f"{student} 'Acceptable'")
+#     elif student_scores[student] <= 70:
+#         print(f"{student} 'Fail'")
+
+# ************************************************
+
+# travel_log = {
+#     "Turkey": {"cities": ["Istanbul", "Alanya", "Antalya"], "Visit_time": 4},
+#     "German": {"visited_cities": ["Berlin", "Hamm", "Dortmund"], "v_times": 2}
+# }
+
+# for city in travel_log:
+#     print(city[1])
+
+# country = input("What's the country that you visited?: ")
+# visits = int(input("How many times you visited?: ")) 
+# cities_input = input("Which cities you visited?: ")
+# list_of_cities = eval(cities_input)
+
+# travel_log = [
+#   {
+#     "country": "France",
+#     "visits": 12,
+#     "cities": ["Paris", "Lille", "Dijon"]
+#   },
+#   {
+#     "country": "Germany",
+#     "visits": 5,
+#     "cities": ["Berlin", "Hamburg", "Stuttgart"]
+#   },
+# ]
+
+# def add_new_country(name, times_visited, cities_visited):
+#     new_country = {}
+#     new_country["country"] = name
+#     new_country["visits"] = times_visited
+#     new_country["cities"] = cities_visited
+#     travel_log.append(new_country)
+
+
+# add_new_country(country, visits, list_of_cities)
+# print(f"I've been to {travel_log[2]['country']} {travel_log[2]['visits']} times.")
+# print(f"My favorite city was {travel_log[2]['cities'][0]}.")
+# ***************************************************************
+import os
+
+
+bids = {}
+bidding_finished = False
+
+def find_highest_bidder(bid_record):
+      highest_bid = 0
+      winner = ""
+      for bidder in bid_record:
+        bid_amount = bid_record[bidder]
+        if bid_amount > highest_bid:
+              highest_bid = bid_amount
+              winner = bidder
+      print(f"The winner is {winner} with a bid of ${highest_bid}")
+
+while not bidding_finished:
+  name = input("What is your name?: ")
+  price = int(input ("What is your bid? $"))
+  bids[name] = price
+  should_continue = input("Are there any other bidders? Type 'Yes' or 'No': ")
+  if should_continue == "no":
+    bidding_finished = True
+    find_highest_bidder(bids)
+  elif should_continue == "yes":
+    os.system('clear')
+
