@@ -550,30 +550,91 @@
 # print(f"I've been to {travel_log[2]['country']} {travel_log[2]['visits']} times.")
 # print(f"My favorite city was {travel_log[2]['cities'][0]}.")
 # ***************************************************************
-import os
+# import os
 
 
-bids = {}
-bidding_finished = False
+# bids = {}
+# bidding_finished = False
 
-def find_highest_bidder(bid_record):
-      highest_bid = 0
-      winner = ""
-      for bidder in bid_record:
-        bid_amount = bid_record[bidder]
-        if bid_amount > highest_bid:
-              highest_bid = bid_amount
-              winner = bidder
-      print(f"The winner is {winner} with a bid of ${highest_bid}")
+# def find_highest_bidder(bid_record):
+#       highest_bid = 0
+#       winner = ""
+#       for bidder in bid_record:
+#         bid_amount = bid_record[bidder]
+#         if bid_amount > highest_bid:
+#               highest_bid = bid_amount
+#               winner = bidder
+#       print(f"The winner is {winner} with a bid of ${highest_bid}")
 
-while not bidding_finished:
-  name = input("What is your name?: ")
-  price = int(input ("What is your bid? $"))
-  bids[name] = price
-  should_continue = input("Are there any other bidders? Type 'Yes' or 'No': ")
-  if should_continue == "no":
-    bidding_finished = True
-    find_highest_bidder(bids)
-  elif should_continue == "yes":
-    os.system('clear')
+# while not bidding_finished:
+#   name = input("What is your name?: ")
+#   price = int(input ("What is your bid? $"))
+#   bids[name] = price
+#   should_continue = input("Are there any other bidders? Type 'Yes' or 'No': \n")
+#   if should_continue == "no":
+#     bidding_finished = True
+#     find_highest_bidder(bids)
+#   elif should_continue == "yes":
+#     os.system('clear')
+
+# ****************************DAYS IN MONTH**********************
+# def is_leap(year):
+#     if year % 4 == 0:
+#         if year % 100 == 0:
+#             if year % 400 == 0:
+#                 print("Leap year")
+#             else:
+#                 print("Not leap year")
+#         else:
+#             print("Leap year")
+#     else:
+#         print("Not leap year")
+  
+# def days_in_month(year, month):
+#     month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+#     if month == 2 and is_leap(year):
+#         return 29
+#     else:
+#         return month_days[month - 1]
+
+# year = int(input())
+# month = int(input())
+# days = days_in_month(year, month)
+# print(days)
+
+# *****************CALCULATOR*************************
+
+def add(n1, n2):
+    return n1 + n2
+
+def subtract(n1, n2):
+    return n1 - n2
+
+def multiply(n1, n2):
+    return n1*n2
+
+def divide(n1, n2):
+    return n1 / n2
+
+operations = {
+    "+": add,
+    "-": subtract,
+    "*": multiply,
+    "/": divide
+}
+
+num1 = int(input("What's the first number?: "))
+
+for symbol in operations:
+    print(symbol)
+
+operation_symbol = input("Pick an operation from the line above: ")
+
+num2 = int(input("What's the second number?: \n"))
+
+calculate_function = operations[operation_symbol]
+
+answer = calculate_function(num1, num2)
+
+print(f"{num1} {operation_symbol} {num2} = {answer}")
 
