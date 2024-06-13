@@ -623,24 +623,24 @@ operations = {
     "/": divide
 }
 
-while should_continue:
-    num1 = int(input("What's the first number?: \n"))
+def calculator():
 
+    num1 = float(input("What's the first number?: \n"))
     for symbol in operations:
         print(symbol)
-    operation_symbol = input("Pick an operation from the line above: ")
-    num2 = int(input("What's the second number?: \n"))
-    calculate_function = operations[operation_symbol]
-    first_answer = calculate_function(num1, num2)
-    print(f"\n{num1} {operation_symbol} {num2} = {first_answer}\n")
-    answer_for_calculator = input(f"Type 'y' to continue calculating with {first_answer}, or type 'n' to exit.: ")
-    if answer_for_calculator == "y":
-        operation_symbol = input("Pick another operation('+', '-', '*', '/'): \n")
-        num3 = int(input("What's the next number?: \n"))
-        calculation_function = operations[operation_symbol]
-        second_answer = calculate_function(first_answer, num3)
-    elif answer_for_calculator == "n":
-        print("Thank you for using calc!")
-        should_continue = False
+    should_continue = True
 
-    print(f"\n{first_answer} {operation_symbol} {num3} = {second_answer}")
+    while should_continue:
+        operation_symbol = input("Pick another operation('+', '-', '*', '/'): \n")
+        num2 = float(input("What's the next number?: \n"))
+        calculation_function = operations[operation_symbol]
+        answer = calculation_function(num1, num2)
+
+        print(f"\n{num1} {operation_symbol} {num2} = {answer}\n")
+
+        if input(f"Type 'y' to continue calculating with {answer}, or type 'n' to start a new calculation: ") == "y":
+            num1 = answer
+        else:
+            should_continue = False
+            calculator()
+calculator()
