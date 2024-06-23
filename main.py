@@ -604,43 +604,79 @@
 
 # *****************CALCULATOR*************************
 
-def add(n1, n2):
-    return n1 + n2
+# def add(n1, n2):
+#     return n1 + n2
 
-def subtract(n1, n2):
-    return n1 - n2
+# def subtract(n1, n2):
+#     return n1 - n2
 
-def multiply(n1, n2):
-    return n1*n2
+# def multiply(n1, n2):
+#     return n1*n2
 
-def divide(n1, n2):
-    return n1 / n2
+# def divide(n1, n2):
+#     return n1 / n2
 
-operations = {
-    "+": add,
-    "-": subtract,
-    "*": multiply,
-    "/": divide
-}
+# operations = {
+#     "+": add,
+#     "-": subtract,
+#     "*": multiply,
+#     "/": divide
+# }
 
-def calculator():
+# def calculator():
 
-    num1 = float(input("What's the first number?: \n"))
-    for symbol in operations:
-        print(symbol)
-    should_continue = True
+#     num1 = float(input("What's the first number?: \n"))
+#     for symbol in operations:
+#         print(symbol)
+#     should_continue = True
 
-    while should_continue:
-        operation_symbol = input("Pick another operation('+', '-', '*', '/'): \n")
-        num2 = float(input("What's the next number?: \n"))
-        calculation_function = operations[operation_symbol]
-        answer = calculation_function(num1, num2)
+#     while should_continue:
+#         operation_symbol = input("Pick another operation('+', '-', '*', '/'): \n")
+#         num2 = float(input("What's the next number?: \n"))
+#         calculation_function = operations[operation_symbol]
+#         answer = calculation_function(num1, num2)
 
-        print(f"\n{num1} {operation_symbol} {num2} = {answer}\n")
+#         print(f"\n{num1} {operation_symbol} {num2} = {answer}\n")
 
-        if input(f"Type 'y' to continue calculating with {answer}, or type 'n' to start a new calculation: ") == "y":
-            num1 = answer
-        else:
-            should_continue = False
-            calculator()
-calculator()
+#         if input(f"Type 'y' to continue calculating with {answer}, or type 'n' to start a new calculation: ") == "y":
+#             num1 = answer
+#         else:
+#             should_continue = False
+#             calculator()
+# calculator()
+
+# ********************-BlackJack-***************************
+import random
+
+def deal_card():
+    """Retuning random card from the deck."""
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    card = random.choice(cards)
+    return card
+
+def calculate_score(cards):
+    """Taking list of cards and returning calculated score"""
+    if sum(cards) == 21 and len(cards) == 2:
+        return 0
+    if 11 in cards and sum(cards) > 21:
+        cards.remove(11)
+        cards.append(1)
+
+    return sum(cards)
+
+user_cards = []
+computer_cards = []
+is_game_over = False
+
+for _ in range(2):
+    user_cards.append(deal_card())
+    computer_cards.append(deal_card())
+
+user_score = calculate_score(user_cards)
+computer_score = calculate_score(computer_cards)
+
+print(f"   Your cards: {user_cards}, current score: {user_score}")
+print(f"   Computer's first card: {computer_cards[0]}")
+
+if user_score == 0 or computer_score == 0 or user_score > 21:
+    is_game_over = True
