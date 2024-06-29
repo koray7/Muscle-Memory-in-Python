@@ -646,94 +646,148 @@
 # calculator()
 
 # ********************-BlackJack-***************************
+# logo = """
+# .------.            _     _            _    _            _    
+# |A_  _ |.          | |   | |          | |  (_)          | |   
+# |( \/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __
+# | \  /|K /\  |     | '_ \| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
+# |  \/ | /  \ |     | |_) | | (_| | (__|   <| | (_| | (__|   < 
+# `-----| \  / |     |_.__/|_|\__,_|\___|_|\_\ |\__,_|\___|_|\_\\
+#       |  \/ K|                            _/ |                
+#       `------'                           |__/           
+# """
+
+
+# import random
+# import os
+
+# def deal_card():
+#     """Retuning random card from the deck."""
+#     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+#     card = random.choice(cards)
+#     return card
+
+# def calculate_score(cards):
+#     """Taking list of cards and returning calculated score"""
+#     if sum(cards) == 21 and len(cards) == 2:
+#         return 0
+#     if 11 in cards and sum(cards) > 21:
+#         cards.remove(11)
+#         cards.append(1)
+
+#     return sum(cards)
+
+
+# def compare(user_score, computer_score):
+#       #Bug fixed. If I and the computer are both over, you lose.
+#     if user_score > 21 and computer_score > 21:
+#         return "You went over. You lose 😤"
+
+#     if user_score == computer_score:
+#         return "Draw 🙃"
+#     elif computer_score == 0:
+#         return "Lose, opponent has Blackjack 😱"
+#     elif user_score == 0:
+#         return "Win with a Blackjack 😎"
+#     elif user_score > 21:
+#         return "You went over. You lose 😭"
+#     elif computer_score > 21:
+#         return "Opponent went over. You win 😁"
+#     elif user_score > computer_score:
+#         return "You win!!! 😃"
+#     else:
+#         return "You lose... 😤"
+# def play_game():
+#     print(logo)
+
+#     user_cards = []
+#     computer_cards = []
+#     is_game_over = False
+
+#     for _ in range(2):
+#         user_cards.append(deal_card())
+#         computer_cards.append(deal_card())
+
+#     while not is_game_over:
+
+#         user_score = calculate_score(user_cards)
+#         computer_score = calculate_score(computer_cards)
+
+#         print(f"   Your cards: {user_cards}, current score: {user_score}")
+#         print(f"   Computer's first card: {computer_cards[0]}")
+
+#         if user_score == 0 or computer_score == 0 or user_score > 21:
+#             is_game_over = True
+#         else:
+#             user_should_deal = input("Type 'y' to get another card, type 'n' to pass: ")
+#             if user_should_deal == "y":
+#                 user_cards.append(deal_card())
+#             else:
+#                 is_game_over = True
+
+#     while computer_score !=0 and computer_score < 17:
+#         computer_cards.append(deal_card())
+#         computer_score = calculate_score(computer_cards)
+
+#     print(f"Your final hand: {user_cards}, final score: {user_score}")
+#     print(f"\nComputer's final hand: {computer_cards}, final score: {computer_score}")
+#     print(compare(user_score, computer_score))
+
+# while input("\nDo you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
+#     os.system('clear')
+#     play_game()
+
+
+# ************************* SCOPE ***********************************
+from random import randint
+
 logo = """
-.------.            _     _            _    _            _    
-|A_  _ |.          | |   | |          | |  (_)          | |   
-|( \/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __
-| \  /|K /\  |     | '_ \| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
-|  \/ | /  \ |     | |_) | | (_| | (__|   <| | (_| | (__|   < 
-`-----| \  / |     |_.__/|_|\__,_|\___|_|\_\ |\__,_|\___|_|\_\\
-      |  \/ K|                            _/ |                
-      `------'                           |__/           
+
+   ___                             ___                     
+  / _ \_   _  ___  ___ ___        / _ \__ _ _ __ ___   ___ 
+ / /_\/ | | |/ _ \/ __/ __|_____ / /_\/ _` | '_ ` _ \ / _ \
+/ /_\\| |_| |  __/\__ \__ \_____/ /_\\ (_| | | | | | |  __/
+\____/ \__,_|\___||___/___/     \____/\__,_|_| |_| |_|\___|
+                                                           
+
 """
 
+EASY_LEVEL_TURNS = 10
+HARD_LEVEL_TURNS = 5
 
-import random
-import os
-
-def deal_card():
-    """Retuning random card from the deck."""
-    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-    card = random.choice(cards)
-    return card
-
-def calculate_score(cards):
-    """Taking list of cards and returning calculated score"""
-    if sum(cards) == 21 and len(cards) == 2:
-        return 0
-    if 11 in cards and sum(cards) > 21:
-        cards.remove(11)
-        cards.append(1)
-
-    return sum(cards)
-
-
-def compare(user_score, computer_score):
-      #Bug fixed. If I and the computer are both over, you lose.
-    if user_score > 21 and computer_score > 21:
-        return "You went over. You lose 😤"
-
-    if user_score == computer_score:
-        return "Draw 🙃"
-    elif computer_score == 0:
-        return "Lose, opponent has Blackjack 😱"
-    elif user_score == 0:
-        return "Win with a Blackjack 😎"
-    elif user_score > 21:
-        return "You went over. You lose 😭"
-    elif computer_score > 21:
-        return "Opponent went over. You win 😁"
-    elif user_score > computer_score:
-        return "You win!!! 😃"
+def check_answer(guess, answer, turns):
+    if guess > answer:
+        print("Too high.")
+        return turns - 1
+    elif guess < answer:
+        print("Too low.")
+        return turns - 1
     else:
-        return "You lose... 😤"
-def play_game():
-    print(logo)
+        print(f"You got it! The answer was {answer}.")
 
-    user_cards = []
-    computer_cards = []
-    is_game_over = False
-
-    for _ in range(2):
-        user_cards.append(deal_card())
-        computer_cards.append(deal_card())
-
-    while not is_game_over:
-
-        user_score = calculate_score(user_cards)
-        computer_score = calculate_score(computer_cards)
-
-        print(f"   Your cards: {user_cards}, current score: {user_score}")
-        print(f"   Computer's first card: {computer_cards[0]}")
-
-        if user_score == 0 or computer_score == 0 or user_score > 21:
-            is_game_over = True
-        else:
-            user_should_deal = input("Type 'y' to get another card, type 'n' to pass: ")
-            if user_should_deal == "y":
-                user_cards.append(deal_card())
-            else:
-                is_game_over = True
-
-    while computer_score !=0 and computer_score < 17:
-        computer_cards.append(deal_card())
-        computer_score = calculate_score(computer_cards)
-
-    print(f"Your final hand: {user_cards}, final score: {user_score}")
-    print(f"\nComputer's final hand: {computer_cards}, final score: {computer_score}")
-    print(compare(user_score, computer_score))
-
-while input("\nDo you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
-    os.system('clear')
-    play_game()
+def set_difficulty():
+    level = input("Choose a difficulty. Type 'easy' or 'hard': ")
+    if level == "easy":
+        return EASY_LEVEL_TURNS
+    else:
+        return HARD_LEVEL_TURNS
     
+def game():
+    print(logo)
+    print("Welcome to the number guessing game!")
+    print("I'm thinking of a number between 1 and 100.")
+    answer = randint(1, 100)
+    print(f">>>>>>>>>>>>>>>{answer}")
+
+    turns = set_difficulty()
+    guess = 0
+    while guess != answer:
+        print(f"You have {turns} attempts remaining to guess the number.")
+        guess = int(input("\nMake a guess: "))
+        turns = check_answer(guess, answer, turns)
+        if turns == 0:
+            print("You've run out of guesses, you lose.")
+            return
+        elif guess != answer:
+            print("Guess again.")
+game()
