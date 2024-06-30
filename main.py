@@ -739,55 +739,101 @@
 
 
 # ************************* SCOPE ***********************************
-from random import randint
+# from random import randint
 
-logo = """
+# logo = """
 
-   ___                             ___                     
-  / _ \_   _  ___  ___ ___        / _ \__ _ _ __ ___   ___ 
- / /_\/ | | |/ _ \/ __/ __|_____ / /_\/ _` | '_ ` _ \ / _ \
-/ /_\\| |_| |  __/\__ \__ \_____/ /_\\ (_| | | | | | |  __/
-\____/ \__,_|\___||___/___/     \____/\__,_|_| |_| |_|\___|
+#    ___                             ___                     
+#   / _ \_   _  ___  ___ ___        / _ \__ _ _ __ ___   ___ 
+#  / /_\/ | | |/ _ \/ __/ __|_____ / /_\/ _` | '_ ` _ \ / _ \
+# / /_\\| |_| |  __/\__ \__ \_____/ /_\\ (_| | | | | | |  __/
+# \____/ \__,_|\___||___/___/     \____/\__,_|_| |_| |_|\___|
                                                            
 
+# """
+
+# EASY_LEVEL_TURNS = 10
+# HARD_LEVEL_TURNS = 5
+
+# def check_answer(guess, answer, turns):
+#     if guess > answer:
+#         print("Too high.")
+#         return turns - 1
+#     elif guess < answer:
+#         print("Too low.")
+#         return turns - 1
+#     else:
+#         print(f"You got it! The answer was {answer}.")
+
+# def set_difficulty():
+#     level = input("Choose a difficulty. Type 'easy' or 'hard': ")
+#     if level == "easy":
+#         return EASY_LEVEL_TURNS
+#     else:
+#         return HARD_LEVEL_TURNS
+    
+# def game():
+#     print(logo)
+#     print("Welcome to the number guessing game!")
+#     print("I'm thinking of a number between 1 and 100.")
+#     answer = randint(1, 100)
+#     print(f">>>>>>>>>>>>>>>{answer}")
+
+#     turns = set_difficulty()
+#     guess = 0
+#     while guess != answer:
+#         print(f"You have {turns} attempts remaining to guess the number.")
+#         guess = int(input("\nMake a guess: "))
+#         turns = check_answer(guess, answer, turns)
+#         if turns == 0:
+#             print("You've run out of guesses, you lose.")
+#             return
+#         elif guess != answer:
+#             print("Guess again.")
+# game()
+# ***********************-HigherLowerGame-*****************************
+
+from higher_lower_data import data
+import random
+
+logo = """
+    __  ___       __             
+   / / / (_)___ _/ /_  ___  _____
+  / /_/ / / __ `/ __ \/ _ \/ ___/
+ / __  / / /_/ / / / /  __/ /    
+/_/ ///_/\__, /_/ /_/\___/_/     
+   / /  /____/_      _____  _____
+  / /   / __ \ | /| / / _ \/ ___/
+ / /___/ /_/ / |/ |/ /  __/ /    
+/_____/\____/|__/|__/\___/_/     
 """
 
-EASY_LEVEL_TURNS = 10
-HARD_LEVEL_TURNS = 5
+vs = """
+ _    __    
+| |  / /____
+| | / / ___/
+| |/ (__  ) 
+|___/____(_)
+"""
 
-def check_answer(guess, answer, turns):
-    if guess > answer:
-        print("Too high.")
-        return turns - 1
-    elif guess < answer:
-        print("Too low.")
-        return turns - 1
-    else:
-        print(f"You got it! The answer was {answer}.")
+def format_data(account):
+    """Takes the account data and returns the printable format"""
+    account_name = account["name"]
+    account_descr = account["description"]
+    account_country = account["country"]
+    return (f"{account_name}, a {account_descr}, from {account_country}")
 
-def set_difficulty():
-    level = input("Choose a difficulty. Type 'easy' or 'hard': ")
-    if level == "easy":
-        return EASY_LEVEL_TURNS
-    else:
-        return HARD_LEVEL_TURNS
-    
-def game():
-    print(logo)
-    print("Welcome to the number guessing game!")
-    print("I'm thinking of a number between 1 and 100.")
-    answer = randint(1, 100)
-    print(f">>>>>>>>>>>>>>>{answer}")
+print(logo)
 
-    turns = set_difficulty()
-    guess = 0
-    while guess != answer:
-        print(f"You have {turns} attempts remaining to guess the number.")
-        guess = int(input("\nMake a guess: "))
-        turns = check_answer(guess, answer, turns)
-        if turns == 0:
-            print("You've run out of guesses, you lose.")
-            return
-        elif guess != answer:
-            print("Guess again.")
-game()
+account_a = random.choice(data)
+account_b = random.choice(data)
+
+if account_a == account_b:
+    account_b = random.choice(data)
+
+
+print(f"Compare A: {format_data(account_a)}.")
+print(vs)
+print(f"Against B: {format_data(account_b)}.")
+
+guess = input("Who has more followers? Type 'A' or 'B': ").lower()
